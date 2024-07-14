@@ -166,3 +166,6 @@ terraform/.terraform/
 terraform/.terraform.lock.hcl
 terraform/*.tfstate
 terraform/*.tfstate.backup
+
+# Terraform Working Directory
+local_deploy/
