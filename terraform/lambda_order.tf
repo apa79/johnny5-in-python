@@ -5,13 +5,11 @@ resource "aws_iam_role" "order" {
 
 data "archive_file" "order" {
   type        = "zip"
-  source_file = "${path.module}/../lambda_order/lambda_function.py"
-  output_path = "${path.module}/${var.project}_lambda_function_order_payload.zip"
+  source_file = "${var.local_lambda_folder}/lambda_order/lambda_function.py"
+  output_path = "${var.local_deploy_folder}/${var.project}_lambda_function_order_payload.zip"
 }
 
 resource "aws_lambda_function" "order" {
-  # If the file is not in the current working directory you will need to include a
-  # path.module in the filename.
   filename      = "${var.project}_lambda_function_order_payload.zip"
   function_name = "${var.project}-order"
   role          = aws_iam_role.order.arn
