@@ -19,7 +19,7 @@ resource "aws_lambda_function" "order" {
 
   source_code_hash = data.archive_file.order.output_base64sha256
 
-  runtime = "python3.9"
+  runtime = "python3.12"
 
   environment {
     variables = {
